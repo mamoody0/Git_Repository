@@ -1,0 +1,196 @@
+# IT Service Desk Analyst Troubleshooting Guide for Dummies
+
+This guide will walk you through basic troubleshooting steps using essential commands. These commands help you resolve network, system, and software issues, making it easier for you to assist users effectively.
+
+## 1. Basic Command-Line Troubleshooting (Windows)
+
+### **ping**
+- **Purpose**: Check if a computer or network device is reachable.
+- **Usage**: 
+    ```bash
+    ping 192.168.1.1
+    ```
+    - If you get a reply, the device is reachable.
+    - If not, there’s a network issue or the device is down.
+
+### **ipconfig**
+- **Purpose**: View the IP configuration of your computer.
+- **Usage**: 
+    ```bash
+    ipconfig /all
+    ```
+    - Look for IP addresses, subnet masks, and gateways. Useful for diagnosing network issues.
+
+### **nslookup**
+- **Purpose**: Find out if a website or domain name can be resolved to an IP address.
+- **Usage**:
+    ```bash
+    nslookup www.google.com
+    ```
+    - If it returns an IP, the DNS service is working. If not, there’s a DNS issue.
+
+### **tracert**
+- **Purpose**: Trace the path packets take to reach a server. Useful for diagnosing network issues.
+- **Usage**:
+    ```bash
+    tracert www.google.com
+    ```
+    - This will show the route taken by packets. If the trace fails, you can see where the issue lies.
+
+### **netstat**
+- **Purpose**: Check for active network connections on your computer.
+- **Usage**:
+    ```bash
+    netstat -a
+    ```
+    - This shows all active connections. If you’re troubleshooting a network service, this is useful.
+
+### **ipconfig /flushdns**
+- **Purpose**: Clear DNS cache, useful if you can't access a website but others can.
+- **Usage**:
+    ```bash
+    ipconfig /flushdns
+    ```
+
+### **sfc /scannow**
+- **Purpose**: Check and repair corrupted system files.
+- **Usage**:
+    ```bash
+    sfc /scannow
+    ```
+    - This will scan your system and fix corrupted files that may cause software issues.
+
+### **chkdsk**
+- **Purpose**: Check the disk for errors.
+- **Usage**:
+    ```bash
+    chkdsk C: /f
+    ```
+    - This checks for errors on your disk. If there are any, it will attempt to fix them.
+
+## 2. Remote Desktop and Support Tools
+
+### **mstsc** (Remote Desktop)
+- **Purpose**: Connect to another computer using Remote Desktop.
+- **Usage**:
+    ```bash
+    mstsc
+    ```
+    - This launches the Remote Desktop window, where you can enter the IP address or hostname of the machine you need to access.
+
+### **msra.exe** (Remote Assistance)
+- **Purpose**: Allow someone to help you remotely.
+- **Usage**:
+    ```bash
+    msra.exe
+    ```
+    - This starts the Remote Assistance tool, which lets another person connect to your computer and help with troubleshooting.
+
+## 3. Active Directory Commands (If applicable)
+
+### **dsquery**
+- **Purpose**: Find users or computers in Active Directory.
+- **Usage**:
+    ```bash
+    dsquery user -name username
+    ```
+    - This helps you find user information in Active Directory, useful for user account issues.
+
+### **net user**
+- **Purpose**: Manage local user accounts.
+- **Usage**:
+    ```bash
+    net user username /active:no
+    ```
+    - This disables a user account. Useful for locking out an account in case of security concerns.
+
+## 4. System Log Checking
+
+### **eventvwr** (Event Viewer)
+- **Purpose**: Open Event Viewer to check system logs for errors.
+- **Usage**:
+    ```bash
+    eventvwr
+    ```
+    - Check logs for errors related to hardware, software, or system events.
+
+### **Get-EventLog** (PowerShell)
+- **Purpose**: Get event log information using PowerShell.
+- **Usage**:
+    ```bash
+    Get-EventLog -LogName Application -Newest 10
+    ```
+    - This retrieves the latest 10 application logs, useful for diagnosing issues.
+
+## 5. Software and System Updates
+
+### **Windows Update Commands**
+- **Purpose**: Force Windows to check for updates.
+- **Usage**:
+    ```bash
+    wuauclt /detectnow
+    ```
+
+### **PowerShell Command to Install a Package**
+- **Purpose**: Install software using PowerShell.
+- **Usage**:
+    ```bash
+    Install-Package <PackageName>
+    ```
+
+## 6. Service Management and Helpdesk Tools
+
+### **Ticket Search Commands**
+- **Purpose**: Search for tickets in your helpdesk system.
+- **Usage**:
+    ```bash
+    search-ticket <ticket_number>
+    ```
+
+### **Create a Ticket**
+- **Purpose**: Create a new support ticket.
+- **Usage**:
+    ```bash
+    ticket create --title "Network Issue" --description "User cannot connect to VPN"
+    ```
+
+## 7. Basic Linux Commands (If applicable)
+
+### **ping** (Linux)
+- **Purpose**: Check if another machine is reachable.
+- **Usage**:
+    ```bash
+    ping 192.168.1.1
+    ```
+
+### **ifconfig**
+- **Purpose**: Display network interface configuration.
+- **Usage**:
+    ```bash
+    ifconfig
+    ```
+
+### **top**
+- **Purpose**: View active processes and system performance.
+- **Usage**:
+    ```bash
+    top
+    ```
+
+### **df**
+- **Purpose**: Check disk space usage.
+- **Usage**:
+    ```bash
+    df -h
+    ```
+
+## 8. General Skills and Knowledge
+
+- **Communication**: Be clear and concise when explaining technical issues to users.
+- **Incident Management**: Know how to document issues and escalate when necessary.
+- **Troubleshooting**: Develop a systematic approach to solving problems, starting from basic steps (ping, reboot) to advanced troubleshooting.
+- **Multitasking**: Be prepared to handle multiple issues at once in a busy environment.
+
+---
+
+By following these commands and steps, you can effectively troubleshoot and resolve common issues for end-users. Practice these commands to improve your efficiency in providing excellent support.
